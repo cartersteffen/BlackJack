@@ -2,16 +2,21 @@
 
 import java.util.ArrayList;
 
-public class BlackJackGameAutomator {
+public class BlackJackGame {
 	private Deck<BlackJackCard> deck;
 	private BlackJackHand[] hands;
 	private static final int HIT_UNTIL = 17;
 	
-	public BlackJackGameAutomator(int numPlayers) {
+	public BlackJackGame(int numPlayers) {
 		hands = new BlackJackHand[numPlayers];
 		for (int i = 0; i < numPlayers; i++) {
 			hands[i] = new BlackJackHand();
 		}
+	}
+
+	public void playerAddCard(int player) {
+		BlackJackHand hand = hands[player];
+		hand.addCard(deck.dealCard());
 	}
 	
 	public boolean dealInitial() {
