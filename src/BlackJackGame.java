@@ -14,6 +14,13 @@ public class BlackJackGame {
 		}
 	}
 
+	public boolean bustOr21(int player) {
+		if(hands[player].busted() || hands[player].is21()) {
+			return false;
+		}
+		return true;
+	}
+
 	public void playerAddCard(int player) {
 		BlackJackHand hand = hands[player];
 		hand.addCard(deck.dealCard());

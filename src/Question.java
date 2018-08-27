@@ -43,6 +43,12 @@ public class Question {
 						if(temp == 1) {
 							blackJackGame.playerAddCard(i);
 							blackJackGame.printHandsAndScore();
+							if(blackJackGame.bustOr21(i)) {
+								continue;
+							} else {
+								temp = 2;
+								continue;
+							}
 						} else if(temp == 2) {
 							break;
 						} else {

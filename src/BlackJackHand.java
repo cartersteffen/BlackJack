@@ -11,7 +11,7 @@ public class BlackJackHand extends Hand<BlackJackCard> {
 		ArrayList<Integer> scores = new ArrayList<>();
 		if (cards.size() != 0) {
 			for (BlackJackCard card : cards) {
-				addCardToScoreList(card, scores);
+				potentialScoresForHand(card, scores);
 			}
 		}
 		int maxUnder = Integer.MIN_VALUE;
@@ -36,12 +36,12 @@ public class BlackJackHand extends Hand<BlackJackCard> {
 			if (card.minValue() != card.maxValue()) {
 				scores.add(card.maxValue());
 			}
-			//addCardToScoreList(card, scores);
+			//potentialScoresForHand(card, scores);
 		}
 		return scores;
 	}
 	
-	private void addCardToScoreList(BlackJackCard card, ArrayList<Integer> scores) {
+	private void potentialScoresForHand(BlackJackCard card, ArrayList<Integer> scores) {
 		if (scores.size() == 0) {
 			scores.add(0);
 		} 
