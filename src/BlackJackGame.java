@@ -88,7 +88,8 @@ public class BlackJackGame {
 	}
 	
 	public ArrayList<Object> getWinners() {
-		ArrayList<Object> winners = new ArrayList<Object>();
+		ArrayList<Object> winners = new ArrayList<>();
+		int dealerScore = hands[hands.length - 1].score();
 		int winningScore = 0;
 		for (int i = 0; i < hands.length; i++) {
 			BlackJackHand hand = hands[i];
@@ -137,6 +138,9 @@ public class BlackJackGame {
 			} else {
 				System.out.print("Hand " + (i + 1) + " (" + hands[i].score() + "): ");
 				hands[i].print();
+				if(hands[i].busted()) {
+					System.out.print("bust");
+				}
 				System.out.println("");
 			}
 		}
@@ -150,6 +154,9 @@ public class BlackJackGame {
 			} else {
 				System.out.print("Hand " + (i + 1) + " (" + hands[i].score() + "): ");
 				hands[i].print();
+				if(hands[i].busted()) {
+					System.out.print("bust");
+				}
 				System.out.println("");
 			}
 		}
