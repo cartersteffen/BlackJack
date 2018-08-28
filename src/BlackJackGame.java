@@ -87,35 +87,69 @@ public class BlackJackGame {
 		return true;
 	}
 	
-	public ArrayList<Object> getWinners() {
+	public void getResults() {
 		ArrayList<Object> winners = new ArrayList<>();
-		int dealerScore = hands[hands.length - 1].score();
-		int winningScore = 0;
-		for (int i = 0; i < hands.length; i++) {
+		ArrayList<Object> losers = new ArrayList<>();
+		ArrayList<Object> push = new ArrayList<>();
+		BlackJackHand dealer = hands[hands.length - 1];
+		int dealerScore = dealer.score();
+		System.out.println(dealerScore);
+		for (int i = 0; i < hands.length - 1; i++) {
 			BlackJackHand hand = hands[i];
-			if (!hand.busted()) {
-				if (hand.score() > winningScore) {
-					winningScore = hand.score();
-					winners.clear();
-					if(i == hands.length - 1) {
-						winners.add("Dealer");
-					} else {
-						winners.add(i + 1);
-					}
-				} else if (hand.score() == winningScore) {
-					if(i == hands.length - 1) {
-						winners.add("Dealer");
-					} else {
-						winners.add(i + 1);
-					}
+			if(!dealer.busted()) {
+				if (hand.busted() || hand.score() < dealerScore) {
+					losers.add(i + 1);
+				} else if(hand.score() > dealerScore) {
+					winners.add(i + 1);
+				} else {
+					push.add(i + 1);
+				}
+			} else {
+				if(hand.busted()) {
+					losers.add(i + 1);
+				} else if(hand.score() < 21) {
+					winners.add(i + 1);
+				}
+			}
+
+			if(winners.size() == 0 || push.size() == 0) {
+				winners.add("Dealer");
+			}
+		}
+		if (winners.size() > 0) {
+			System.out.print("Winners: ");
+			for (Object i : winners) {
+				if(i == winners.get(winners.size() - 1)) {
+					System.out.print(i);
+				} else {
+					System.out.print(i + ", ");
 				}
 			}
 		}
-		return winners;
+		if (push.size() > 0) {
+			System.out.print("Push: ");
+			for (Object i : push) {
+				if(i == push.get(push.size() - 1)) {
+					System.out.print(i);
+				} else {
+					System.out.print(i + ", ");
+				}
+			}
+		}
+		if (losers.size() > 0) {
+			System.out.print("Losers: ");
+			for (Object i : losers) {
+				if(i == losers.get(losers.size() - 1)) {
+					System.out.print(i);
+				} else {
+					System.out.print(i + ", ");
+				}
+			}
+		}
 	}
 	
 	public void initializeDeck() {
-		ArrayList<BlackJackCard> cards = new ArrayList<BlackJackCard>();
+		ArrayList<BlackJackCard> cards = new ArrayList<>();
 		for (int i = 1; i <= 13; i++) {
 			for (int j = 0; j <= 3; j++) {
 				Suit suit = Suit.getSuitFromValue(j);

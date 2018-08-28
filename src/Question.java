@@ -66,20 +66,7 @@ public class Question {
 				} else {
 					System.out.println("\n-- Completed Game --");
 					blackJackGame.printFinalHandsAndScore();
-					ArrayList<Object> winners = blackJackGame.getWinners();
-					if (winners.size() > 0) {
-						System.out.print("Winners: ");
-						for (Object i : winners) {
-							if(i == winners.get(winners.size() - 1)) {
-								System.out.print(i);
-							} else {
-								System.out.print(i + ", ");
-							}
-						}
-						//System.out.println("");
-					} else {
-						System.out.println("Draw. All players have busted.");
-					}
+					blackJackGame.getResults();
 				}
 			}
 		}
