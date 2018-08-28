@@ -24,14 +24,13 @@ public class Question {
 				System.out.print("Blackjack at ");
 				for (int i : blackjacks) {
 					if(i == blackjacks.get(blackjacks.size() - 1)) {
-						System.out.print(i);
+						System.out.print(i + 1);
 					} else {
-						System.out.print(i + ", ");
+						System.out.print((i + 1) + ", ");
 					}
 				}
 				System.out.println("");
-			} 
-			else {
+			}
 				for (int i = 0; i < numPlayers - 1; i++) {
 					int temp = 0;
 					while(temp != 2) {
@@ -55,20 +54,17 @@ public class Question {
 							System.out.println("Invalid answer");
 						}
 					}
-
-
 				}
-
-
-				success = blackJackGame.playAllHands();
-				if (!success) {
+				blackJackGame.printHandsAndScore();
+				blackJackGame.getResults();
+				//success = blackJackGame.playAllHands();
+				/*if (!success) {
 					System.out.println("Error. Out of cards.");
 				} else {
 					System.out.println("\n-- Completed Game --");
 					blackJackGame.printFinalHandsAndScore();
 					blackJackGame.getResults();
-				}
-			}
+				}*/
 		}
 	}
 

@@ -49,11 +49,6 @@ public class BlackJackGame {
 		return winners;
 	}
 	
-	//public boolean playHand(int i) {
-	//	BlackJackHand hand = hands[i];
-	//	return playHand(hand);
-	//}
-	
 	public boolean playHand(BlackJackHand hand) {
 		while (hand.score() < HIT_UNTIL) {
 			BlackJackCard card = deck.dealCard();
