@@ -111,16 +111,17 @@ public class BlackJackGame {
 					winners.add(i + 1);
 				}
 			}
-
-			if(winners.size() == 0 || push.size() == 0) {
-				winners.add("Dealer");
-			}
 		}
+
+		if(winners.size() == 0 && push.size() == 0) {
+			winners.add("Dealer");
+		}
+
 		if (winners.size() > 0) {
 			System.out.print("Winners: ");
 			for (Object i : winners) {
 				if(i == winners.get(winners.size() - 1)) {
-					System.out.print(i);
+					System.out.print(i + " ");
 				} else {
 					System.out.print(i + ", ");
 				}
@@ -130,7 +131,7 @@ public class BlackJackGame {
 			System.out.print("Push: ");
 			for (Object i : push) {
 				if(i == push.get(push.size() - 1)) {
-					System.out.print(i);
+					System.out.print(i + " ");
 				} else {
 					System.out.print(i + ", ");
 				}
