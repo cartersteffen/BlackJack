@@ -49,13 +49,14 @@ public class BlackJackGame {
 		return winners;
 	}
 	
-	public boolean playHand(BlackJackHand hand) {
-		while (hand.score() < HIT_UNTIL) {
+	public boolean playDealerHand() {
+		BlackJackHand dealer = hands[hands.length - 1];
+		while (dealer.score() < HIT_UNTIL) {
 			BlackJackCard card = deck.dealCard();
 			if (card == null) {
 				return false;
 			}
-			hand.addCard(card);
+			dealer.addCard(card);
 		}
 		return true;
 	}
@@ -73,14 +74,14 @@ public class BlackJackGame {
 		}
 	}
 	
-	public boolean playAllHands(){
+	/*public boolean playAllHands(){
 		for (BlackJackHand hand : hands) {
 			if (!playHand(hand)) {
 				return false;
 			}
 		}
 		return true;
-	}
+	}*/
 	
 	public void getResults() {
 		ArrayList<Object> winners = new ArrayList<>();
