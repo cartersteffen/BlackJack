@@ -55,9 +55,11 @@ public class Question {
 						}
 					}
 				}
-				blackJackGame.printHandsAndScore();
+				//blackJackGame.printHandsAndScore();
+				//blackJackGame.getResults();
+				success = blackJackGame.playDealerHand();
+				blackJackGame.printFinalHandsAndScore();
 				blackJackGame.getResults();
-				//success = blackJackGame.playAllHands();
 				/*if (!success) {
 					System.out.println("Error. Out of cards.");
 				} else {
