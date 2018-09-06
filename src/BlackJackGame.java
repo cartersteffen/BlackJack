@@ -15,7 +15,7 @@ public class BlackJackGame {
 	}
 
 	public boolean bustOr21(int player) {
-		if(hands[player].busted() || hands[player].is21()) {
+		if(hands[player].busted() || hands[player].is21() || hands[player].isBlackJack()) {
 			return false;
 		}
 		return true;
@@ -40,7 +40,7 @@ public class BlackJackGame {
 	}
 	
 	public ArrayList<Integer> getBlackJacks() {
-		ArrayList<Integer> winners = new ArrayList<Integer>();
+		ArrayList<Integer> winners = new ArrayList<>();
 		for (int i = 0; i < hands.length; i++) {
 			if (hands[i].isBlackJack()) {
 				winners.add(i);

@@ -6,6 +6,8 @@ public class Question {
 
 	
 	public static void main(String[] args) {
+		int temp;
+
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter number of players: ");
 		int numPlayers = input.nextInt();
@@ -32,8 +34,9 @@ public class Question {
 				System.out.println("");
 			}
 				for (int i = 0; i < numPlayers - 1; i++) {
-					int temp = 0;
-					while(temp != 2) {
+
+					temp = 0;
+					while((temp != 2) || blackJackGame.bustOr21(i)) {
 						System.out.println("Player " + (i + 1));
 						System.out.println("Enter 1 to hit or 2 to stay");
 						System.out.println("1) hit");
@@ -42,11 +45,8 @@ public class Question {
 						if(temp == 1) {
 							blackJackGame.playerAddCard(i);
 							blackJackGame.printHandsAndScore();
-							if(blackJackGame.bustOr21(i)) {
-								continue;
-							} else {
+							if(!blackJackGame.bustOr21(i)) {
 								temp = 2;
-								continue;
 							}
 						} else if(temp == 2) {
 							break;
