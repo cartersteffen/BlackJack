@@ -36,7 +36,7 @@ public class Question {
 				for (int i = 0; i < numPlayers - 1; i++) {
 
 					temp = 0;
-					while((temp != 2) || blackJackGame.bustOr21(i)) {
+					while((temp != 2) && blackJackGame.bustOr21(i)) {
 						System.out.println("Player " + (i + 1));
 						System.out.println("Enter 1 to hit or 2 to stay");
 						System.out.println("1) hit");
